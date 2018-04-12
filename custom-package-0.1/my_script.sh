@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "This is the custom package script!"
+printf "This is the custom package script!\n"

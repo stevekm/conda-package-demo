@@ -1,0 +1,6 @@
+package:
+    name: custom-package
+    version: "0.1"
+
+source:
+    url: https://raw.githubusercontent.com/stevekm/conda-package-demo/master/custom-package-0.1/my_script.sh.tar.gz
