@@ -13,6 +13,10 @@ Files in this repository:
 
 - `custom.yml`: YAML file used to create a conda env from the custom package
 
+## custom-package-0.1
+
+The sole content of this demo custom package is the script `my_script.sh`, which will be made accessible from your `PATH`. 
+
 # Usage
 
 Clone this repository
@@ -43,6 +47,21 @@ This will:
 - build the custom package in the `custom-package-0.1` directory
 
 - create a conda env called `custom-package-0.1` from the package
+
+Test the new env
+
+```
+make test
+```
+
+- output should look like this:
+
+```
+$ make test
+source /Users/steve/projects/conda-package-demo/conda/bin/activate custom-package-0.1 && \
+	my_script.sh
+This is the custom package script!
+```
 
 # Resources
 
