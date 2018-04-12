@@ -13,7 +13,7 @@ $(MINICONDA_sh):
 dl: $(MINICONDA_sh)
 
 $(CONDA_INSTALL_DIR): dl
-	bash "$(MINICONDA_sh)" -b -p "$(CONDA_INSTALL_DIR)"
+	[ ! -d "$(CONDA_INSTALL_DIR)" ] && bash "$(MINICONDA_sh)" -b -p "$(CONDA_INSTALL_DIR)" || :
 
 # install conda in the current directory and install the conda-build package to it
 install: $(CONDA_INSTALL_DIR)
@@ -26,6 +26,17 @@ custom: install
 	conda-build custom-package-0.1 && \
 	conda create -y -c local -n custom-package-0.1 custom-package==0.1
 
+# build the custom package and install from YAML env file
+custom-yaml: install
+	source $(CONDA_ACTIVATE) && \
+	conda-build custom-package-0.1 && \
+	conda env create -f custom.yml
+
+test:
+	source $(CONDA_ACTIVATE) custom-package-0.1 && \
+	my_script.sh
+
+#  remove all conda files
 clean:
 	[ -d "$(CONDA_INSTALL_DIR)" ] && mv "$(CONDA_INSTALL_DIR)" old_conda && rm -rf old_conda &
 	rm -f "$(MINICONDA_sh)"

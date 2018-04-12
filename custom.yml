@@ -1,0 +1,5 @@
+name: custom-package-0.1
+channels:
+  - local
+dependencies:
+  - custom-package==0.1
