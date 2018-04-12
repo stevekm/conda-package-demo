@@ -11,7 +11,7 @@ Files in this repository:
 
 - `custom-package-0.1`: directory containing custom conda package (includes `README.md` file with contents description)
 
-- `custom.yml`: YAML file to create a conda env from the custom package
+- `custom.yml`: YAML file used to create a conda env from the custom package
 
 # Usage
 
